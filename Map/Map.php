@@ -317,6 +317,10 @@ class Map
     {
         $this->height = $value;
     }
+
+    public function setExtraOptions($options) {
+        $this->mapOptions = array_merge($this->mapOptions,$options);
+    }
     
     /**
      * Constructs a new instance of Map.
