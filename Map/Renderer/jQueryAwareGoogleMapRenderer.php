@@ -24,12 +24,13 @@ class jQueryAwareGoogleMapRenderer extends GoogleMapRenderer
         $html .= $this->renderOpenScriptTag();
         $html .= $this->renderOpenjQueryTag();
         $html .= $this->renderMapVar($map);
-        $html .= $this->renderBoundsVar($map);
+        if ($map->getAutoZoom())
+            $html .= $this->renderBoundsVar($map);
         $html .= $this->renderMarkers($map);
         
         if ($map->getAutoZoom()) {
             $html .= $this->setFitToBounds($map);
-        } else {
+        }  else if($map->getCenter()){
             $html .= $this->setMapCenter($map);
         }
         
