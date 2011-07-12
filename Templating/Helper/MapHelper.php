@@ -104,6 +104,11 @@ class MapHelper extends Helper
             else
                 $map->setAutoZoom(true);
         }
+
+        if($map->getAutoZoom() && count($obj) == 1){
+            $map->setCenter($lat, $lng);
+            $map->setAutoZoom(false);
+        }
         
         return $this->renderer->render($map);
     }
